@@ -269,23 +269,25 @@ button:focus-visible {
 .hero-photo h1 { color: var(--white); text-shadow: 0 2px 16px rgba(15,30,40,0.55), 0 1px 4px rgba(15,30,40,0.6); }
 .hero-photo p.lead { color: rgba(255,255,255,0.95); text-shadow: 0 1px 8px rgba(15,30,40,0.55); }
 
-/* Standalone photo band — full-width image with no overlaid text, used
-   when on-photo text (e.g. mug wording) needs to stay fully visible
-   without competing with headline copy for the same space */
-.photo-band {
+/* Standalone photo strip — full-width image with no overlaid text, used
+   below a text-only hero so on-photo text (e.g. mug wording, book titles)
+   always stays fully visible without competing with headline copy for
+   the same space. `aspect-ratio` is set per-image inline so the section
+   exactly matches the photo's shape at every viewport width — with
+   background-size:contain that means zero cropping AND zero empty
+   letterbox space (no leftover padding to show through). */
+.photo-strip {
   position: relative;
-  height: 340px;
-  background-size: cover;
-  background-position: center 85%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 0;
 }
-.photo-band .overlay {
+.photo-strip .overlay {
   position: absolute;
   inset: 0;
   mix-blend-mode: multiply;
   background: linear-gradient(165deg, rgba(31,63,82,0.4) 0%, rgba(53,112,138,0.28) 50%, rgba(31,63,82,0.42) 100%);
-}
-@media (max-width: 720px) {
-  .photo-band { height: 220px; }
 }
 
 /* Photo section band — used for supporting lifestyle imagery */
